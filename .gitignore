@@ -1,0 +1,4 @@
+Makefile
+target
+rsync_exclude
+.dist
