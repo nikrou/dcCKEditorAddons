@@ -30,6 +30,8 @@ $dcckeditor_addons_active = $core->blog->settings->dcCKEditorAddons->active;
 $dcckeditor_addons_was_actived = $dcckeditor_addons_active;
 $dcckeditor_addons_repository_path = $core->blog->settings->dcCKEditorAddons->repository_path;
 
+$default_tab = 'settings';
+
 if (!$dcckeditor_active) {
     dcPage::addErrorNotice(__('You must enable dcCKEditor plugin to use that plugin.'));
 } else {
@@ -67,7 +69,43 @@ if (!$dcckeditor_active) {
         } catch(Exception $e) {
             $core->error->add($e->getMessage());
         }
+    } elseif ((!empty($_POST['upload_plugin']) && !empty($_FILES['plugin_file']))
+              || (!empty($_POST['fetch_plugin']) && !empty($_POST['plugin_url']))) {
+
+        if (empty($_POST['your_pwd']) || !$core->auth->checkPassword($core->auth->crypt($_POST['your_pwd']))) {
+            dcPage::addErrorNotice(__('Password verification failed'));
+        }
+
+        if (!empty($_POST['upload_plugin'])) {
+            try {
+                if (!move_uploaded_file($_FILES['plugin_file']['tmp_name'], $dcckeditor_addons_repository_path.'/'.$_FILES['plugin_file']['name'])) {
+                    throw new Exception(__('Unable to move uploaded file.'));
+                }
+
+                $ckeditor_addon = new dcCKEditorAddon();
+                $ckeditor_addon->upload($dcckeditor_addons_repository_path.'/'.$_FILES['plugin_file']['name']);
+                $ckeditor_addon->install();
+
+                dcPage::addSuccessNotice(__('Plugin has been uploaded.'));
+            } catch (Exception $e) {
+                dcPage::addErrorNotice($e->getMessage());
+            }
+        } else {
+            $url = urldecode($_POST['plugin_url']);
+            $dest = $dcckeditor_addons_repository_path.'/'.basename($url);
+            try {
+                $ckeditor_addon = new dcCKEditorAddon($zip_file);
+                $ckeditor_addon->download();
+                $ckeditor_addon->install();
+
+                dcPage::addSuccessNotice(__('Plugin has been downloaded.'));
+            } catch (Exception $e) {
+                dcPage::addErrorNotice($e->getMessage());
+            }
+        }
+
+        http::redirect($p_url.'#plugins');
     }
 }
 
-include(dirname(__FILE__).'/tpl/index.tpl');
+include(__DIR__.'/tpl/index.tpl');
