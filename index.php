@@ -94,8 +94,8 @@ if (!$dcckeditor_active) {
             $url = urldecode($_POST['plugin_url']);
             $dest = $dcckeditor_addons_repository_path.'/'.basename($url);
             try {
-                $ckeditor_addon = new dcCKEditorAddon($zip_file);
-                $ckeditor_addon->download();
+                $ckeditor_addon = new dcCKEditorAddon();
+                $ckeditor_addon->download($url, $dest);
                 $ckeditor_addon->install();
 
                 dcPage::addSuccessNotice(__('Plugin has been downloaded.'));

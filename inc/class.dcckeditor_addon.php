@@ -30,7 +30,9 @@ class dcCKEditorAddon
         $this->zip_file = $zip_file;
     }
 
-    public function download($url, $dest) {
+    public function download($url, $zip_file) {
+        $this->zip_file = $zip_file;
+
 		// Check and add default protocol if necessary
 		if (!preg_match('%^http[s]?:\/\/%',$url)) {
 			$url = 'http://'.$url;
@@ -38,14 +40,13 @@ class dcCKEditorAddon
 		// Download package
 		if ($client = netHttp::initClient($url, $path)) {
 			try {
-				$client->setUserAgent($this->user_agent);
+				$client->setUserAgent('DotClear.org CKEditorBrowser/0.1');
 				$client->useGzip(false);
 				$client->setPersistReferers(false);
-				$client->setOutput($dest);
+				$client->setOutput($this->zip_file);
 				$client->get($path);
 				unset($client);
-			}
-			catch (Exception $e) {
+			} catch (Exception $e) {
 				unset($client);
 				throw new Exception(__('An error occurred while downloading the file.'));
 			}
