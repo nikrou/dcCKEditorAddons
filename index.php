@@ -29,6 +29,16 @@ $core->blog->settings->addNameSpace('dcCKEditorAddons');
 $dcckeditor_addons_active = $core->blog->settings->dcCKEditorAddons->active;
 $dcckeditor_addons_was_actived = $dcckeditor_addons_active;
 $dcckeditor_addons_repository_path = $core->blog->settings->dcCKEditorAddons->repository_path;
+$dcckeditor_addons_plugins = json_decode($core->blog->settings->dcCKEditorAddons->plugins, true);
+
+$plugins = array();
+$pattern = "`CKEDITOR\.plugins\.add\(\s*'([^']*)'`";
+foreach ($dirs = glob($dcckeditor_addons_repository_path.'/*/plugin.js') as $plugin_js) {
+    if (preg_match($pattern, file_get_contents($plugin_js), $matches)) {
+        $plugin = array('name' => $matches[1], 'button' => $matches[1], 'activated' => false);
+        $plugins[$matches[1]] = $plugin;
+    }
+}
 
 $default_tab = 'settings';
 
@@ -105,6 +115,20 @@ if (!$dcckeditor_active) {
         }
 
         http::redirect($p_url.'#plugins');
+    } elseif (!empty($_POST['activate_plugins']) && $dcckeditor_addons_was_actived) {
+        if (!empty($_POST['plugins'])) {
+            foreach ($_POST['plugins'] as $plugin) {
+                $plugins[$plugin]['activated'] = true;
+            }
+        }
+        if (!empty($_POST['buttons'])) {
+            foreach ($_POST['buttons'] as $plugin => $button) {
+                $plugins[$plugin]['button'] = $button;
+            }
+        }
+        $core->blog->settings->dcCKEditorAddons->put('plugins', json_encode($plugins), 'string');
+        dcPage::addSuccessNotice(__('The configuration has been updated.'));
+        http::redirect($p_url);
     }
 }
 

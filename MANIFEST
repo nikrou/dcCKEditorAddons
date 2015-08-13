@@ -1,0 +1,17 @@
+dcCKEditorAddons/locales/fr/main.po
+dcCKEditorAddons/BUGS
+dcCKEditorAddons/README.md
+dcCKEditorAddons/_admin.php
+dcCKEditorAddons/_install.php
+dcCKEditorAddons/_prepend.php
+dcCKEditorAddons/CHANGELOG.md
+dcCKEditorAddons/COPYING
+dcCKEditorAddons/inc/class.dcckeditor_addon.php
+dcCKEditorAddons/inc/class.dcckeditor_addons.behaviors.php
+dcCKEditorAddons/index.php
+dcCKEditorAddons/css/admin.css
+dcCKEditorAddons/TODO.md
+dcCKEditorAddons/imgs/icon.png
+dcCKEditorAddons/_define.php
+dcCKEditorAddons/MANIFEST
+dcCKEditorAddons/tpl/index.tpl

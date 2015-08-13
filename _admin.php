@@ -21,9 +21,12 @@
 
 if (!defined('DC_CONTEXT_ADMIN')) { return; }
 
-$_menu['Plugins']->addItem('dcCKEditorAddons',
-                           $core->adminurl->get('admin.plugin.dcCKEditorAddons'),
-                           dcPage::getPF('dcCKEditorAddons/imgs/icon.png'),
-                           preg_match('/'.preg_quote($core->adminurl->get('admin.plugin.dcCKEditorAddons')).'(&.*)?$/', $_SERVER['REQUEST_URI']),
-                           $core->auth->check('admin,contentadmin', $core->blog->id)
+$_menu['Plugins']->addItem(
+    'dcCKEditorAddons',
+    $core->adminurl->get('admin.plugin.dcCKEditorAddons'),
+    dcPage::getPF('dcCKEditorAddons/imgs/icon.png'),
+    preg_match('/'.preg_quote($core->adminurl->get('admin.plugin.dcCKEditorAddons')).'(&.*)?$/', $_SERVER['REQUEST_URI']),
+    $core->auth->check('admin,contentadmin', $core->blog->id)
 );
+
+$core->addBehavior('ckeditorExtraPlugins', array('dcCKEditorAddonsBehaviors', 'ckeditorExtraPlugins'));

@@ -1,0 +1,11 @@
+msgid ""
+msgstr ""
+
+msgid "Enable dcCKEditorAddons plugin"
+msgstr "Activer le plugin dcCKEditorAddons"
+
+msgid "Add a plugin"
+msgstr "Ajouter un plugin"
+
+msgid "Save active plugins"
+msgstr "Enregistrer les plugins actifs"

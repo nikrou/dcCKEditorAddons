@@ -30,6 +30,7 @@ $settings = $core->blog->settings;
 $settings->addNamespace('dcCKEditorAddons');
 
 $settings->dcCKEditorAddons->put('active', false, 'boolean', 'dcCKEditorAddons plugin activated?', false, true);
+$settings->dcCKEditorAddons->put('plugins', '{}', 'string', 'dcCKEditorAddons activated plugins', false, true);
 
 $public_path = $core->blog->public_path;
 $repository_path = $public_path.'/dcckeditor_addons';

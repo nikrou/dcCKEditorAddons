@@ -19,5 +19,28 @@
 // | MA 02110-1301 USA.                                                    |
 // +-----------------------------------------------------------------------+
 
-$__autoload['dcCKEditorAddon'] = __DIR__.'/inc/class.dcckeditor_addon.php';
-$__autoload['dcCKEditorAddonsBehaviors'] = __DIR__.'/inc/class.dcckeditor_addons.behaviors.php';
+class dcCKEditorAddonsBehaviors
+{
+    public static function ckeditorExtraPlugins(ArrayObject $extraPlugins, $context) {
+        global $core;
+
+        $self_ns = $core->blog->settings->addNamespace('dcCKEditorAddons');
+        if (!$self_ns->active) {
+            return;
+        }
+
+        $plugin_base_url = $core->blog->host.$core->blog->settings->system->public_url.'/'.basename($self_ns->repository_path);
+        $plugins = json_decode($self_ns->plugins, true);
+        if (!empty($plugins)) {
+            foreach ($plugins as $name => $plugin) {
+                if ($plugin['activated']) {
+                    $extraPlugins[] = array(
+                        'name' => $name,
+                        'button' => !empty($plugin['button'])?$plugin['button']:$name,
+                        'url' => $plugin_base_url.'/'.$name.'/plugin.js'
+                    );
+                }
+            }
+        }
+    }
+}

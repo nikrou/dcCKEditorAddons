@@ -2,6 +2,7 @@
   <head>
     <title>dcCKEditorAddons</title>
     <?php echo dcPage::jsPageTabs($default_tab);?>
+    <?php echo dcPage::cssLoad('index.php?pf=dcCKEditorAddons/css/admin.css');?>
   </head>
   <body>
     <?php echo dcPage::breadcrumb(array(__('Plugins') => '',__('dcCKEditorAddons') => '')).dcPage::notices(); ?>
@@ -45,6 +46,39 @@
       <p class="top-add">
 	<a class="button add" href="<?php echo $p_url;?>#add-plugin"><?php echo __('Add a plugin');?></a>
       </p>
+      <?php if (!empty($plugins)):?>
+      <form method="post" action="<?php echo $p_url;?>#plugins" enctype="multipart/form-data">
+	<div class="table-outer ckeditor-addons">
+	  <table>
+	    <thead>
+	      <th class="minimal">&nbsp;</th>
+	      <th><?php echo __('Name');?></th>
+	      <th><?php echo __('Button');?></th>
+	    </thead>
+	    <tbody>
+	      <?php foreach ($plugins as $plugin_name => $plugin):?>
+	      <tr>
+		<td>
+		  <input type="checkbox" name="plugins[]" value="<?php echo $plugin_name;?>"<?php if ($dcckeditor_addons_plugins[$plugin_name]['activated']):?> checked="checked"<?php endif;?>>
+		</td>
+		<td>
+		  <?php echo $plugin_name;?>
+		</td>
+		<td>
+		  <?php echo form::field(array('buttons['.$plugin['name'].']'),80,255,$dcckeditor_addons_plugins[$plugin_name]['button']);?>
+		</td>
+	      </tr>
+	      <?php endforeach;?>
+	    </tbody>
+	  </table>
+	  <p>
+	    <input type="hidden" name="p" value="dcCKEditorAddons"/>
+	    <?php echo $core->formNonce();?>
+	    <input type="submit" name="activate_plugins" value="<?php echo __('Save active plugins');?>" />
+	  </p>
+	</div>
+      </form>
+      <?php endif;?>
     </div>
 
     <div class="multi-part" id="add-plugin" title="<?php echo __('Add a plugin');?>">
