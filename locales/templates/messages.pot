@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: dcCKEditorAddons 0.1.1\n"
+"Report-Msgid-Bugs-To: nikrou77+l10n@gmail.com\n"
+"POT-Creation-Date: 2015-08-14 20:38+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: tpl/index.tpl:56 tpl/index.tpl:93 tpl/index.tpl:56 tpl/index.tpl:98
+msgid "Add a plugin"
+msgstr ""
+
+#: tpl/index.tpl:65 tpl/index.tpl:64
+msgid "Button"
+msgstr ""
+
+#: tpl/index.tpl:30 tpl/index.tpl:30
+msgid "Check if zip file is a valid CKEditor addon?"
+msgstr ""
+
+#: tpl/index.tpl:65
+msgid "Dependencies"
+msgstr ""
+
+#: _install.php:42 index.php:75 index.php:96
+#, php-format
+msgid "Directory \"%s\" for dcCKEditorAddons plugins repository needs to allow read and write access."
+msgstr ""
+
+#: tpl/index.tpl:19 tpl/index.tpl:19
+msgid "Enable dcCKEditorAddons plugin"
+msgstr ""
+
+#: tpl/index.tpl:34 tpl/index.tpl:34
+msgid "If test for a valid CKEditor addon failed and you can not add the addon, then uncheck that option or unzip the CKEditor addon manually"
+msgstr ""
+
+#: tpl/index.tpl:64 tpl/index.tpl:63
+msgid "Name"
+msgstr ""
+
+#: tpl/index.tpl:26
+msgid "Options"
+msgstr ""
+
+#: tpl/index.tpl:15 tpl/index.tpl:15
+msgid "Plugin activation"
+msgstr ""
+
+#: index.php:136
+msgid "Addon has been downloaded."
+msgstr ""
+
+#: index.php:124
+msgid "Addon has been uploaded."
+msgstr ""
+
+#: tpl/index.tpl:8 tpl/index.tpl:53 tpl/index.tpl:54 tpl/index.tpl:8
+#: tpl/index.tpl:53 tpl/index.tpl:54
+msgid "Plugins"
+msgstr ""
+
+#: tpl/index.tpl:37 tpl/index.tpl:37
+msgid "Repository path :"
+msgstr ""
+
+#: tpl/index.tpl:86 tpl/index.tpl:91
+msgid "Save addons configuration"
+msgstr ""
+
+#: inc/class.dcckeditor_addon.php:82 inc/class.dcckeditor_addon.php:85
+#: inc/class.dcckeditor_addon.php:100
+msgid "The zip file does not appear to be a valid CKEditor addon."
+msgstr ""
+
+#: index.php:47 index.php:68
+msgid "You must enable dcCKEditor plugin to use that plugin."
+msgstr ""

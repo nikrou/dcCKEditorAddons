@@ -56,6 +56,8 @@ class dcCKEditorAddon
 	}
 
     public function install() {
+        global $core;
+
         $zip = new fileUnzip($this->zip_file);
         if ($zip->isEmpty()) {
             $zip->close();
@@ -64,6 +66,21 @@ class dcCKEditorAddon
         }
 
         $zip_root_dir = $zip->getRootDir();
+        if (!$zip_root_dir) {
+            // try to find a root anyway if all dirs start with same pattern
+            $dirs = $zip->getDirsList();
+            $n = 0;
+            $zip_root_dir = substr($dirs[0],0,strpos($dirs[0], '/'));
+            foreach ($dirs as $dir) {
+                if ($zip_root_dir != substr($dirs[0],0,strpos($dirs[0], '/'))) {
+                    $n++;
+                }
+            }
+            if ($n>0) {
+                $zip_root_dir = false;
+            }
+        }
+
         if ($zip_root_dir != false) {
             $target = dirname($this->zip_file);
             $destination = $target.'/'.$zip_root_dir;
@@ -76,11 +93,13 @@ class dcCKEditorAddon
 			$has_plugin_js = $zip->hasFile($plugin_js);
         }
 
-        if (!$has_plugin_js) {
-			$zip->close();
-			unlink($this->zip_file);
-			throw new Exception(__('The zip file does not appear to be a valid CKEditor plugin.'));
-		}
+        if ($core->blog->settings->dcCKEditorAddons->check_validity) {
+            if (!$has_plugin_js) {
+                $zip->close();
+                unlink($this->zip_file);
+                throw new Exception(__('The zip file does not appear to be a valid CKEditor addon.'));
+            }
+        }
 
         if (!is_dir($destination)) {
             files::makeDir($destination, true);

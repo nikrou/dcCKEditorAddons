@@ -30,6 +30,7 @@ $settings = $core->blog->settings;
 $settings->addNamespace('dcCKEditorAddons');
 
 $settings->dcCKEditorAddons->put('active', false, 'boolean', 'dcCKEditorAddons plugin activated?', false, true);
+$settings->dcCKEditorAddons->put('check_validity', true, 'boolean', 'Check if zip file is a valid CKEditor addon?', false, true);
 $settings->dcCKEditorAddons->put('plugins', '{}', 'string', 'dcCKEditorAddons activated plugins', false, true);
 
 $public_path = $core->blog->public_path;

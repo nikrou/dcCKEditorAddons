@@ -1,11 +1,62 @@
 msgid ""
 msgstr ""
-
-msgid "Enable dcCKEditorAddons plugin"
-msgstr "Activer le plugin dcCKEditorAddons"
+"Project-Id-Version: dcCKEditorAddons 0.1.1\n"
+"Report-Msgid-Bugs-To: nikrou77+l10n@gmail.com\n"
+"POT-Creation-Date: 2015-08-14 20:38+0200\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 msgid "Add a plugin"
 msgstr "Ajouter un plugin"
 
-msgid "Save active plugins"
-msgstr "Enregistrer les plugins actifs"
+msgid "Button"
+msgstr "Bouton"
+
+msgid "Check if zip file is a valid CKEditor addon?"
+msgstr "Vérifier que le fichier zip est bien un plugin CKEditor"
+
+msgid "Dependencies"
+msgstr "Dépendances"
+
+#, php-format
+msgid "Directory \"%s\" for dcCKEditorAddons plugins repository needs to allow read and write access."
+msgstr "Le répertoire \"%s\" pour le dépôt des plugins CKEditor nécessite un accès en lecture et écriture."
+
+msgid "Enable dcCKEditorAddons plugin"
+msgstr "Activer le plugin dcCKEditorAddons"
+
+msgid "If test for a valid CKEditor addon failed and you can not add the addon, then uncheck that option or unzip the CKEditor addon manually"
+msgstr "Si le test pour vérifier que le zip est un plugin CKEditor valide, échoue, alors décochez la case ou installez le zip manuellement"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Options"
+msgstr "Options"
+
+msgid "Plugin activation"
+msgstr "Activation du plugin"
+
+msgid "Addon has been downloaded."
+msgstr "L'extension a été téléchargée"
+
+msgid "Addon has been uploaded."
+msgstr "L'extension a été téléchargée"
+
+msgid "Plugins"
+msgstr "Extensions"
+
+msgid "Repository path :"
+msgstr "Chemin du dépôt des extensions :"
+
+msgid "Save addons configuration"
+msgstr "Enregistrer la configuration des extensions"
+
+msgid "The zip file does not appear to be a valid CKEditor addon."
+msgstr "Le fichier zip ne semble pas être une extension CKEditor valide"
+
+msgid "You must enable dcCKEditor plugin to use that plugin."
+msgstr "Vous devez activer le plugin dcCKEditor pour utiliser ce plugin"

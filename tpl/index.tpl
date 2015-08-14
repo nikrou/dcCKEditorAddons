@@ -24,6 +24,15 @@
 	<?php if ($dcckeditor_addons_active):?>
 	<div class="fieldset">
           <h3><?php echo  __('Options');?></h3>
+	  <p>
+	    <label class="classic" for="dcckeditor_addons_check_validity">
+	      <?php echo form::checkbox('dcckeditor_addons_check_validity', 1, $dcckeditor_addons_check_validity);?>
+	      <?php echo __('Check if zip file is a valid CKEditor addon?');?>
+	    </label>
+	  </p>
+	  <p class="form-note">
+	    <?php echo __('If test for a valid CKEditor addon failed and you can not add the addon, then uncheck that option or unzip the CKEditor addon manually');?>
+	  </p>
           <p>
 	    <label for="repository" class="classic"><?php echo __('Repository path :').' ';?>
               <?php echo form::field('dcckeditor_addons_repository_path', 80, 255, $dcckeditor_addons_repository_path);?>
@@ -51,21 +60,26 @@
 	<div class="table-outer ckeditor-addons">
 	  <table>
 	    <thead>
-	      <th class="minimal">&nbsp;</th>
 	      <th><?php echo __('Name');?></th>
 	      <th><?php echo __('Button');?></th>
+	      <th><?php echo __('Dependencies');?></th>
 	    </thead>
 	    <tbody>
 	      <?php foreach ($plugins as $plugin_name => $plugin):?>
 	      <tr>
 		<td>
-		  <input type="checkbox" name="plugins[]" value="<?php echo $plugin_name;?>"<?php if ($dcckeditor_addons_plugins[$plugin_name]['activated']):?> checked="checked"<?php endif;?>>
+		  <label class="classic">
+		    <input type="checkbox" name="plugins[]" value="<?php echo $plugin_name;?>"<?php if ($plugin['activated']):?> checked="checked"<?php endif;?>>
+		    <?php echo $plugin_name;?>
+		  </label>
 		</td>
 		<td>
-		  <?php echo $plugin_name;?>
+		  <?php echo form::field(array('buttons['.$plugin['name'].']'),80,255,$plugin['button']);?>
 		</td>
 		<td>
-		  <?php echo form::field(array('buttons['.$plugin['name'].']'),80,255,$dcckeditor_addons_plugins[$plugin_name]['button']);?>
+		  <?php if (!empty($plugin['dependencies'])):?>
+		  <?php echo $plugin['dependencies'];?>
+		  <?php endif;?>
 		</td>
 	      </tr>
 	      <?php endforeach;?>
@@ -74,7 +88,7 @@
 	  <p>
 	    <input type="hidden" name="p" value="dcCKEditorAddons"/>
 	    <?php echo $core->formNonce();?>
-	    <input type="submit" name="activate_plugins" value="<?php echo __('Save active plugins');?>" />
+	    <input type="submit" name="activate_plugins" value="<?php echo __('Save addons configuration');?>" />
 	  </p>
 	</div>
       </form>

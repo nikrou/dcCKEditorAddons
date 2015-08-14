@@ -25,7 +25,7 @@ $this->registerModule(
 	/* Name */		    "dcCKEditorAddons",
 	/* Description*/	"Add CKEditor plugins easily to your blog",
 	/* Author */		"Nicolas Roudaire",
-	/* Version */		'0.1.0',
+	/* Version */		'0.2.0',
     array('permissions' => 'contentadmin,pages',
           'type' => 'plugin',
           'dc_min' => '2.7',

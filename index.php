@@ -28,15 +28,37 @@ $dcckeditor_active = $core->blog->settings->dcckeditor->active;
 $core->blog->settings->addNameSpace('dcCKEditorAddons');
 $dcckeditor_addons_active = $core->blog->settings->dcCKEditorAddons->active;
 $dcckeditor_addons_was_actived = $dcckeditor_addons_active;
+$dcckeditor_addons_check_validity = $core->blog->settings->dcCKEditorAddons->check_validity;
 $dcckeditor_addons_repository_path = $core->blog->settings->dcCKEditorAddons->repository_path;
 $dcckeditor_addons_plugins = json_decode($core->blog->settings->dcCKEditorAddons->plugins, true);
 
 $plugins = array();
-$pattern = "`CKEDITOR\.plugins\.add\(\s*'([^']*)'`";
+$name_pattern = "`CKEDITOR\.plugins\.add\(\s*'([^']*)'`";
+$button_pattern = "`addButton\(\s*'([^']*)'`";
+$require_pattern = "`requires\s*:\s*'([^']*)'`";
+
 foreach ($dirs = glob($dcckeditor_addons_repository_path.'/*/plugin.js') as $plugin_js) {
-    if (preg_match($pattern, file_get_contents($plugin_js), $matches)) {
-        $plugin = array('name' => $matches[1], 'button' => $matches[1], 'activated' => false);
-        $plugins[$matches[1]] = $plugin;
+    $name = '';
+    $plugin = array('name' => '', 'button' => '', 'activated' => false);
+    $plugin_js_content = file_get_contents($plugin_js);
+    if (preg_match($name_pattern, $plugin_js_content, $matches)) {
+        $plugin['name'] = $matches[1];
+    }
+    if (preg_match($button_pattern, $plugin_js_content, $matches)) {
+        $plugin['button'] = $matches[1];
+    }
+    if (preg_match($require_pattern, $plugin_js_content, $matches)) {
+        $plugin['dependencies'] = $matches[1];
+    }
+    if (!empty($plugin['name'])) {
+        if (!empty($dcckeditor_addons_plugins[$plugin['name']])) {
+            foreach ($dcckeditor_addons_plugins[$plugin['name']] as $key => $value) {
+                if (!empty($value)) {
+                    $plugin[$key] = $value;
+                }
+            }
+        }
+        $plugins[$plugin['name']] = $plugin;
     }
 }
 
@@ -52,6 +74,9 @@ if (!$dcckeditor_active) {
 
             // change other settings only if they were in html page
             if ($dcckeditor_addons_was_actived) {
+                $dcckeditor_addons_check_validity = (empty($_POST['dcckeditor_addons_check_validity']))?false:true;
+                $core->blog->settings->dcCKEditorAddons->put('check_validity', $dcckeditor_addons_check_validity, 'boolean');
+
                 if (empty($_POST['dcckeditor_addons_repository_path']) || trim($_POST['dcckeditor_addons_repository_path']) == '') {
                     $tmp_repository = $core->blog->public_path.'/dcckeditor_addons';
                 } else {
@@ -96,7 +121,7 @@ if (!$dcckeditor_active) {
                 $ckeditor_addon->upload($dcckeditor_addons_repository_path.'/'.$_FILES['plugin_file']['name']);
                 $ckeditor_addon->install();
 
-                dcPage::addSuccessNotice(__('Plugin has been uploaded.'));
+                dcPage::addSuccessNotice(__('Addon has been uploaded.'));
             } catch (Exception $e) {
                 dcPage::addErrorNotice($e->getMessage());
             }
@@ -108,7 +133,7 @@ if (!$dcckeditor_active) {
                 $ckeditor_addon->download($url, $dest);
                 $ckeditor_addon->install();
 
-                dcPage::addSuccessNotice(__('Plugin has been downloaded.'));
+                dcPage::addSuccessNotice(__('Addon has been downloaded.'));
             } catch (Exception $e) {
                 dcPage::addErrorNotice($e->getMessage());
             }
