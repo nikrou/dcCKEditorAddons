@@ -52,10 +52,9 @@ foreach ($dirs = glob($dcckeditor_addons_repository_path.'/*/plugin.js') as $plu
     }
     if (!empty($plugin['name'])) {
         if (!empty($dcckeditor_addons_plugins[$plugin['name']])) {
-            foreach ($dcckeditor_addons_plugins[$plugin['name']] as $key => $value) {
-                if (!empty($value)) {
-                    $plugin[$key] = $value;
-                }
+            $plugin['activated'] = $dcckeditor_addons_plugins[$plugin['name']]['activated'];
+            if (!empty($dcckeditor_addons_plugins[$plugin['name']]['button'])) {
+                $plugin['button'] = $dcckeditor_addons_plugins[$plugin['name']]['button'];
             }
         }
         $plugins[$plugin['name']] = $plugin;
@@ -141,6 +140,9 @@ if (!$dcckeditor_active) {
 
         http::redirect($p_url.'#plugins');
     } elseif (!empty($_POST['activate_plugins']) && $dcckeditor_addons_was_actived) {
+        foreach ($plugins as $key => &$plugin) {
+            $plugin['activated'] = false;
+        }
         if (!empty($_POST['plugins'])) {
             foreach ($_POST['plugins'] as $plugin) {
                 $plugins[$plugin]['activated'] = true;
