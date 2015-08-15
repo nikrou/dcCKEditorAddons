@@ -38,7 +38,6 @@ $button_pattern = "`addButton\(\s*'([^']*)'`";
 $require_pattern = "`requires\s*:\s*'([^']*)'`";
 
 foreach ($dirs = glob($dcckeditor_addons_repository_path.'/*/plugin.js') as $plugin_js) {
-    $name = '';
     $plugin = array('name' => '', 'button' => '', 'activated' => false);
     $plugin_js_content = file_get_contents($plugin_js);
     if (preg_match($name_pattern, $plugin_js_content, $matches)) {
@@ -140,19 +139,21 @@ if (!$dcckeditor_active) {
 
         http::redirect($p_url.'#plugins');
     } elseif (!empty($_POST['activate_plugins']) && $dcckeditor_addons_was_actived) {
-        foreach ($plugins as $key => &$plugin) {
-            $plugin['activated'] = false;
+        foreach ($plugins as $key => $plugin) {
+            $plugins[$key]['activated'] = false;
         }
+
         if (!empty($_POST['plugins'])) {
-            foreach ($_POST['plugins'] as $plugin) {
-                $plugins[$plugin]['activated'] = true;
+            foreach ($_POST['plugins'] as $plugin_name) {
+                $plugins[$plugin_name]['activated'] = true;
             }
         }
         if (!empty($_POST['buttons'])) {
-            foreach ($_POST['buttons'] as $plugin => $button) {
-                $plugins[$plugin]['button'] = $button;
+            foreach ($_POST['buttons'] as $plugin_name => $button_name) {
+                $plugins[$plugin_name]['button'] = $button_name;
             }
         }
+
         $core->blog->settings->dcCKEditorAddons->put('plugins', json_encode($plugins), 'string');
         dcPage::addSuccessNotice(__('The configuration has been updated.'));
         http::redirect($p_url);
