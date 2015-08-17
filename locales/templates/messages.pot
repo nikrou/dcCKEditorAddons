@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: dcCKEditorAddons 0.1.1\n"
+"Project-Id-Version: dcCKEditorAddons 0.3.0\n"
 "Report-Msgid-Bugs-To: nikrou77+l10n@gmail.com\n"
-"POT-Creation-Date: 2015-08-14 20:38+0200\n"
+"POT-Creation-Date: 2015-08-17 20:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,67 +16,177 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: tpl/index.tpl:56 tpl/index.tpl:93 tpl/index.tpl:56 tpl/index.tpl:98
+#: index.php:41
+msgid "Activate"
+msgstr ""
+
+#: index.php:48
+msgid "Activated"
+msgstr ""
+
+#: tpl/index.tpl:74 tpl/index.tpl:74
+msgid "Activated?"
+msgstr ""
+
+#: tpl/index.tpl:56 tpl/index.tpl:93 tpl/index.tpl:98 tpl/index.tpl:64
+#: tpl/index.tpl:110 tpl/index.tpl:114 tpl/index.tpl:64 tpl/index.tpl:114
 msgid "Add a plugin"
 msgstr ""
 
-#: tpl/index.tpl:65 tpl/index.tpl:64
+#: index.php:136 index.php:141 index.php:142 index.php:145
+msgid "Addon has been downloaded."
+msgstr ""
+
+#: index.php:124 index.php:129 index.php:130 index.php:133
+msgid "Addon has been uploaded."
+msgstr ""
+
+#: inc/class.dcckeditor_addon.php:51 inc/class.dcckeditor_addon.php:54
+msgid "An error occurred while downloading the file."
+msgstr ""
+
+#: tpl/index.tpl:11 tpl/index.tpl:11
+msgid "Are you sure you want to delete selected addon?"
+msgstr ""
+
+#: tpl/index.tpl:10 tpl/index.tpl:10
+#, php-format
+msgid "Are you sure you want to delete selected addons (%s)?"
+msgstr ""
+
+#: tpl/index.tpl:65 tpl/index.tpl:64 tpl/index.tpl:72 tpl/index.tpl:72
 msgid "Button"
 msgstr ""
 
-#: tpl/index.tpl:30 tpl/index.tpl:30
+#: index.php:181
+#, php-format
+msgid "Cannot remove addon \"%s\" files"
+msgstr ""
+
+#: tpl/index.tpl:30 tpl/index.tpl:38 tpl/index.tpl:38
 msgid "Check if zip file is a valid CKEditor addon?"
 msgstr ""
 
-#: tpl/index.tpl:65
+#: index.php:42
+msgid "Deactivate"
+msgstr ""
+
+#: index.php:49
+msgid "Deactivated"
+msgstr ""
+
+#: index.php:42 index.php:43
+msgid "Delete"
+msgstr ""
+
+#: tpl/index.tpl:65 tpl/index.tpl:73 tpl/index.tpl:73
 msgid "Dependencies"
 msgstr ""
 
-#: _install.php:42 index.php:75 index.php:96
+#: _install.php:42 index.php:75 index.php:96 index.php:101 index.php:102
+#: index.php:105
 #, php-format
 msgid "Directory \"%s\" for dcCKEditorAddons plugins repository needs to allow read and write access."
 msgstr ""
 
-#: tpl/index.tpl:19 tpl/index.tpl:19
+#: tpl/index.tpl:148 tpl/index.tpl:152 tpl/index.tpl:152
+msgid "Download"
+msgstr ""
+
+#: tpl/index.tpl:135 tpl/index.tpl:139 tpl/index.tpl:139
+msgid "Download a zip file"
+msgstr ""
+
+#: inc/class.dcckeditor_addon.php:65
+msgid "Empty plugin zip file."
+msgstr ""
+
+#: tpl/index.tpl:19 tpl/index.tpl:27 tpl/index.tpl:27
 msgid "Enable dcCKEditorAddons plugin"
 msgstr ""
 
-#: tpl/index.tpl:34 tpl/index.tpl:34
+#: tpl/index.tpl:34 tpl/index.tpl:42 tpl/index.tpl:42
 msgid "If test for a valid CKEditor addon failed and you can not add the addon, then uncheck that option or unzip the CKEditor addon manually"
 msgstr ""
 
-#: tpl/index.tpl:64 tpl/index.tpl:63
+#: tpl/index.tpl:64 tpl/index.tpl:63 tpl/index.tpl:71 tpl/index.tpl:71
 msgid "Name"
 msgstr ""
 
-#: tpl/index.tpl:26
+#: tpl/index.tpl:26 tpl/index.tpl:34 tpl/index.tpl:34
 msgid "Options"
 msgstr ""
 
-#: tpl/index.tpl:15 tpl/index.tpl:15
+#: index.php:116 index.php:117 index.php:120
+msgid "Password verification failed"
+msgstr ""
+
+#: tpl/index.tpl:15 tpl/index.tpl:23 tpl/index.tpl:23
 msgid "Plugin activation"
 msgstr ""
 
-#: index.php:136
-msgid "Addon has been downloaded."
-msgstr ""
-
-#: index.php:124
-msgid "Addon has been uploaded."
-msgstr ""
-
-#: tpl/index.tpl:8 tpl/index.tpl:53 tpl/index.tpl:54 tpl/index.tpl:8
-#: tpl/index.tpl:53 tpl/index.tpl:54
+#: tpl/index.tpl:8 tpl/index.tpl:53 tpl/index.tpl:54 tpl/index.tpl:16
+#: tpl/index.tpl:61 tpl/index.tpl:62 tpl/index.tpl:16 tpl/index.tpl:61
+#: tpl/index.tpl:62
 msgid "Plugins"
 msgstr ""
 
-#: tpl/index.tpl:37 tpl/index.tpl:37
+#: tpl/index.tpl:37 tpl/index.tpl:45 tpl/index.tpl:45
 msgid "Repository path :"
+msgstr ""
+
+#: tpl/index.tpl:117 tpl/index.tpl:123 tpl/index.tpl:138 tpl/index.tpl:144
+#: tpl/index.tpl:121 tpl/index.tpl:127 tpl/index.tpl:142 tpl/index.tpl:148
+#: tpl/index.tpl:121 tpl/index.tpl:127 tpl/index.tpl:142 tpl/index.tpl:148
+msgid "Required field"
 msgstr ""
 
 #: tpl/index.tpl:86 tpl/index.tpl:91
 msgid "Save addons configuration"
+msgstr ""
+
+#: tpl/index.tpl:55 tpl/index.tpl:55
+msgid "Save configuration"
+msgstr ""
+
+#: index.php:171 index.php:172
+msgid "Selected addon has been "
+msgid_plural "Selected addons have been "
+msgstr[0] ""
+msgstr[1] ""
+
+#: index.php:172
+#, php-format
+msgid "Selected addon has been %s."
+msgid_plural "Selected (%d) addons have been %s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: index.php:165
+msgid "Selected addon has been activated."
+msgid_plural "Selected addons have been activated"
+msgstr[0] ""
+msgstr[1] ""
+
+#: index.php:187
+#, php-format
+msgid "Selected addon has been deleted."
+msgid_plural "Selected (%d) addons have been deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#: tpl/index.tpl:99 tpl/index.tpl:103 tpl/index.tpl:103
+msgid "Selected addons action:"
+msgstr ""
+
+#: tpl/index.tpl:19 tpl/index.tpl:20 tpl/index.tpl:19 tpl/index.tpl:20
+msgid "Settings"
+msgstr ""
+
+#: index.php:107 index.php:108 index.php:111
+msgid "The configuration has been updated."
 msgstr ""
 
 #: inc/class.dcckeditor_addon.php:82 inc/class.dcckeditor_addon.php:85
@@ -84,6 +194,47 @@ msgstr ""
 msgid "The zip file does not appear to be a valid CKEditor addon."
 msgstr ""
 
-#: index.php:47 index.php:68
+#: index.php:122 index.php:123 index.php:126
+msgid "Unable to move uploaded file."
+msgstr ""
+
+#: index.php:42
+msgid "Unactivate"
+msgstr ""
+
+#: tpl/index.tpl:128 tpl/index.tpl:132 tpl/index.tpl:132
+msgid "Upload"
+msgstr ""
+
+#: tpl/index.tpl:114 tpl/index.tpl:118 tpl/index.tpl:118
+msgid "Upload a zip file"
+msgstr ""
+
+#: tpl/index.tpl:111 tpl/index.tpl:115 tpl/index.tpl:115
+msgid "You can install plugins by uploading or downloading zip files."
+msgstr ""
+
+#: index.php:47 index.php:68 index.php:73 index.php:74 index.php:77
 msgid "You must enable dcCKEditor plugin to use that plugin."
+msgstr ""
+
+#: tpl/index.tpl:123 tpl/index.tpl:144 tpl/index.tpl:127 tpl/index.tpl:148
+#: tpl/index.tpl:127 tpl/index.tpl:148
+msgid "Your password:"
+msgstr ""
+
+#: tpl/index.tpl:138 tpl/index.tpl:142 tpl/index.tpl:142
+msgid "Zip file URL:"
+msgstr ""
+
+#: tpl/index.tpl:117 tpl/index.tpl:121 tpl/index.tpl:121
+msgid "Zip file path:"
+msgstr ""
+
+#: tpl/index.tpl:16 tpl/index.tpl:16
+msgid "dcCKEditorAddons"
+msgstr ""
+
+#: tpl/index.tpl:102 tpl/index.tpl:106 tpl/index.tpl:106
+msgid "ok"
 msgstr ""

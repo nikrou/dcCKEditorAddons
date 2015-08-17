@@ -37,6 +37,17 @@ $name_pattern = "`CKEDITOR\.plugins\.add\(\s*'([^']*)'`";
 $button_pattern = "`addButton\(\s*'([^']*)'`";
 $require_pattern = "`requires\s*:\s*'([^']*)'`";
 
+$plugins_actions_combo = array(
+    __('Activate') => 'activate',
+    __('Deactivate') => 'deactivate',
+    __('Delete') => 'delete',
+);
+
+$fmt_img = '<img alt="%1$s" title="%1$s" src="images/%2$s" />';
+$img_plugin_status = array();
+$img_plugin_status[true] = sprintf($fmt_img, __('Activated'), 'check-on.png');
+$img_plugin_status[false] = sprintf($fmt_img, __('Deactivated'), 'check-off.png');
+
 foreach ($dirs = glob($dcckeditor_addons_repository_path.'/*/plugin.js') as $plugin_js) {
     $plugin = array('name' => '', 'button' => '', 'activated' => false);
     $plugin_js_content = file_get_contents($plugin_js);
@@ -138,25 +149,51 @@ if (!$dcckeditor_active) {
         }
 
         http::redirect($p_url.'#plugins');
-    } elseif (!empty($_POST['activate_plugins']) && $dcckeditor_addons_was_actived) {
-        foreach ($plugins as $key => $plugin) {
-            $plugins[$key]['activated'] = false;
-        }
-
-        if (!empty($_POST['plugins'])) {
+    } elseif (!empty($_POST['action']) && $dcckeditor_addons_was_actived && !empty($_POST['plugins'])) {
+        if ($_POST['action']=='activate' || $_POST['action']=='deactivate') {
             foreach ($_POST['plugins'] as $plugin_name) {
-                $plugins[$plugin_name]['activated'] = true;
+                $plugins[$plugin_name]['activated'] = $_POST['action']=='activate';
             }
-        }
-        if (!empty($_POST['buttons'])) {
-            foreach ($_POST['buttons'] as $plugin_name => $button_name) {
-                $plugins[$plugin_name]['button'] = $button_name;
-            }
-        }
 
-        $core->blog->settings->dcCKEditorAddons->put('plugins', json_encode($plugins), 'string');
-        dcPage::addSuccessNotice(__('The configuration has been updated.'));
-        http::redirect($p_url);
+            if (!empty($_POST['buttons'])) {
+                foreach ($_POST['buttons'] as $plugin_name => $button_name) {
+                    $plugins[$plugin_name]['button'] = $button_name;
+                }
+            }
+
+            $core->blog->settings->dcCKEditorAddons->put('plugins', json_encode($plugins), 'string');
+            if ($_POST['action']=='activate') {
+                $verb = 'activated';
+            } else {
+                $verb = 'deactivated';
+            }
+            dcPage::addSuccessNotice(
+                sprintf(
+                    __('Selected addon has been '.$verb.'.', 'Selected (%d) addons have been '.$verb.'.', count($_POST['plugins'])),
+                    count($_POST['plugins'])
+                    )
+            );
+            http::redirect($p_url);
+        } elseif ($_POST['action']=='delete') {
+            try {
+                foreach ($_POST['plugins'] as $plugin_name) {
+                    if (!files::deltree($dcckeditor_addons_repository_path.'/'.$plugin_name)) {
+                        throw new Exception(sprintf(__('Cannot remove addon "%s" files'), $plugin_name));
+                    }
+                    unset($plugins[$plugin_name]);
+                }
+                dcPage::addSuccessNotice(
+                    sprintf(
+                        __('Selected addon has been deleted.', 'Selected (%d) addons have been deleted.', count($_POST['plugins'])),
+                        count($_POST['plugins'])
+                    )
+                );
+                $core->blog->settings->dcCKEditorAddons->put('plugins', json_encode($plugins), 'string');
+            } catch (Exception $e) {
+                dcPage::addErrorNotice($e->getMessage());
+            }
+            http::redirect($p_url);
+        }
     }
 }
 

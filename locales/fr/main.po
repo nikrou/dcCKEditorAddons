@@ -2,21 +2,56 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcCKEditorAddons 0.1.1\n"
 "Report-Msgid-Bugs-To: nikrou77+l10n@gmail.com\n"
-"POT-Creation-Date: 2015-08-14 20:38+0200\n"
+"POT-Creation-Date: 2015-08-17 20:33+0200\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+msgid "Activate"
+msgstr "Activer"
+
+msgid "Activated"
+msgstr "Activée"
+
+msgid "Activated?"
+msgstr "Activée ? "
+
 msgid "Add a plugin"
 msgstr "Ajouter un plugin"
+
+msgid "Addon has been downloaded."
+msgstr "L'extension a été téléchargée"
+
+msgid "Addon has been uploaded."
+msgstr "L'extension a été téléchargée"
+
+msgid "Are you sure you want to delete selected addon?"
+msgstr "Êtes-vous sûr de vouloir supprimer cette extension ? "
+
+#, php-format
+msgid "Are you sure you want to delete selected addons (%s)?"
+msgstr "Êtes-vous sûr de vouloir supprimer ces %s extensions ? "
 
 msgid "Button"
 msgstr "Bouton"
 
+#, php-format
+msgid "Cannot remove addon \"%s\" files"
+msgstr "Impossible de supprimer les fichiers de l'extension \"%s\""
+
 msgid "Check if zip file is a valid CKEditor addon?"
 msgstr "Vérifier que le fichier zip est bien un plugin CKEditor"
+
+msgid "Deactivate"
+msgstr "Désactiver"
+
+msgid "Deactivated"
+msgstr "Désactivée"
+
+msgid "Delete"
+msgstr "Supprimer"
 
 msgid "Dependencies"
 msgstr "Dépendances"
@@ -34,17 +69,8 @@ msgstr "Si le test pour vérifier que le zip est un plugin CKEditor valide, éch
 msgid "Name"
 msgstr "Nom"
 
-msgid "Options"
-msgstr "Options"
-
 msgid "Plugin activation"
 msgstr "Activation du plugin"
-
-msgid "Addon has been downloaded."
-msgstr "L'extension a été téléchargée"
-
-msgid "Addon has been uploaded."
-msgstr "L'extension a été téléchargée"
 
 msgid "Plugins"
 msgstr "Extensions"
@@ -54,6 +80,27 @@ msgstr "Chemin du dépôt des extensions :"
 
 msgid "Save addons configuration"
 msgstr "Enregistrer la configuration des extensions"
+
+#, php-format
+msgid "Selected addon has been activated."
+msgid_plural "Selected addons have been activated"
+msgstr[0] "L'extension sélectionnée a été activée."
+msgstr[1] "Les %d extensions sélectionnées ont bien été activées."
+
+#, php-format
+msgid "Selected addon has been deactivated."
+msgid_plural "Selected addons have been deactivated"
+msgstr[0] "L'extension sélectionnée a été désactivée."
+msgstr[1] "Les %d extensions sélectionnées ont été désactivées."
+
+#, php-format
+msgid "Selected addon has been deleted."
+msgid_plural "Selected (%d) addons have been deleted."
+msgstr[0] "L'extension sélectionnée a été supprimée."
+msgstr[1] "Les %d extensions sélectionnées ont été supprimées."
+
+msgid "Selected addons action:"
+msgstr "Actions sur les extensions sélectionnées : "
 
 msgid "The zip file does not appear to be a valid CKEditor addon."
 msgstr "Le fichier zip ne semble pas être une extension CKEditor valide"

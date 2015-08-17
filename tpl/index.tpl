@@ -3,6 +3,14 @@
     <title>dcCKEditorAddons</title>
     <?php echo dcPage::jsPageTabs($default_tab);?>
     <?php echo dcPage::cssLoad('index.php?pf=dcCKEditorAddons/css/admin.css');?>
+    <?php echo dcPage::jsLoad('index.php?pf=dcCKEditorAddons/js/admin.js');?>
+    <script type="text/javascript">
+      //<![CDATA[
+      var dcckeditor_addons_confirm_delete = [];
+      dcckeditor_addons_confirm_delete['addons'] = "<?php echo __('Are you sure you want to delete selected addons (%s)?');?>";
+      dcckeditor_addons_confirm_delete['addon'] = "<?php echo __('Are you sure you want to delete selected addon?');?>";
+      //]]>
+    </script>
   </head>
   <body>
     <?php echo dcPage::breadcrumb(array(__('Plugins') => '',__('dcCKEditorAddons') => '')).dcPage::notices(); ?>
@@ -56,20 +64,21 @@
 	<a class="button add" href="<?php echo $p_url;?>#add-plugin"><?php echo __('Add a plugin');?></a>
       </p>
       <?php if (!empty($plugins)):?>
-      <form method="post" action="<?php echo $p_url;?>#plugins" enctype="multipart/form-data">
+      <form method="post" action="<?php echo $p_url;?>#plugins" enctype="multipart/form-data" name="plugins-list" id="plugins-form">
 	<div class="table-outer ckeditor-addons">
 	  <table>
 	    <thead>
 	      <th><?php echo __('Name');?></th>
 	      <th><?php echo __('Button');?></th>
 	      <th><?php echo __('Dependencies');?></th>
+	      <th><?php echo __('Activated?');?></th>
 	    </thead>
 	    <tbody>
 	      <?php foreach ($plugins as $plugin_name => $plugin):?>
 	      <tr>
 		<td>
 		  <label class="classic">
-		    <input type="checkbox" name="plugins[]" value="<?php echo $plugin_name;?>"<?php if ($plugin['activated']):?> checked="checked"<?php endif;?>>
+		    <input type="checkbox" name="plugins[]" value="<?php echo $plugin_name;?>">
 		    <?php echo $plugin_name;?>
 		  </label>
 		</td>
@@ -81,15 +90,22 @@
 		  <?php echo $plugin['dependencies'];?>
 		  <?php endif;?>
 		</td>
+		<td>
+		  <?php echo $img_plugin_status[$plugin['activated']];?>
+		</td>
 	      </tr>
 	      <?php endforeach;?>
 	    </tbody>
 	  </table>
-	  <p>
-	    <input type="hidden" name="p" value="dcCKEditorAddons"/>
-	    <?php echo $core->formNonce();?>
-	    <input type="submit" name="activate_plugins" value="<?php echo __('Save addons configuration');?>" />
-	  </p>
+	  <div class="two-cols">
+	    <p class="col checkboxes-helpers"></p>
+	    <p class="col right">
+	      <label for="action" class="classic"><?php echo __('Selected addons action:');?></label>
+	      <?php echo form::combo('action', $plugins_actions_combo);?>
+	      <?php echo $core->formNonce();?>
+	      <input type="submit" value="<?php echo __('ok');?>" />
+	    </p>
+	  </div>
 	</div>
       </form>
       <?php endif;?>
@@ -98,7 +114,7 @@
     <div class="multi-part" id="add-plugin" title="<?php echo __('Add a plugin');?>">
       <p><?php echo __('You can install plugins by uploading or downloading zip files.');?></p>
       <div class="fieldset">
-	<form method="post" action="<?php echo $p_url;?>#plugins" enctype="multipart/form-data">
+	<form method="post" action="<?php echo $p_url;?>#plugins" enctype="multipart/form-data" name="upload-plugin">
 	  <h4><?php echo __('Upload a zip file');?></h4>
 	  <p class="field">
 	    <label for="plugin_file" class="classic required">
@@ -119,7 +135,7 @@
 	</form>
       </div>
       <div class="fieldset">
-	<form method="post" action="<?php echo $p_url;?>#plugins" enctype="multipart/form-data">
+	<form method="post" action="<?php echo $p_url;?>#plugins" enctype="multipart/form-data" name="download-plugin">
 	  <h4><?php echo __('Download a zip file');?></h4>
 	  <p class="field">
 	    <label for="plugin_url" class="classic required">
