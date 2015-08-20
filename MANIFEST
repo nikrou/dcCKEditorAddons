@@ -14,5 +14,6 @@ dcCKEditorAddons/css/admin.css
 dcCKEditorAddons/TODO.md
 dcCKEditorAddons/imgs/icon.png
 dcCKEditorAddons/_define.php
+dcCKEditorAddons/js/admin.js
 dcCKEditorAddons/MANIFEST
 dcCKEditorAddons/tpl/index.tpl

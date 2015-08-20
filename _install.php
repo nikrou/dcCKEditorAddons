@@ -51,12 +51,6 @@ if (is_dir($repository_path)) {
     }
 }
 
-if (!is_file($repository_path.'/.htaccess')) {
-    try {
-        file_put_contents($repository_path.'/.htaccess',"Deny from all\n");
-    } catch (Exception $e) {}
-}
-
 $settings->dcCKEditorAddons->put('repository_path', $repository_path, 'string', 'dcCKEditorAddons plugins directory', false, true);
 
 $core->setVersion('dcCKEditorAddons', $version);

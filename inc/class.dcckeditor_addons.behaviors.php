@@ -29,7 +29,7 @@ class dcCKEditorAddonsBehaviors
             return;
         }
 
-        $plugin_base_url = $core->blog->host.$core->blog->settings->system->public_url.'/'.basename($self_ns->repository_path);
+        $plugin_base_url = $core->blog->host.$core->blog->settings->system->public_url.'/'.basename($self_ns->repository_path).'/%s/plugin.js';
         $plugins = json_decode($self_ns->plugins, true);
         if (!empty($plugins)) {
             foreach ($plugins as $name => $plugin) {
@@ -37,7 +37,7 @@ class dcCKEditorAddonsBehaviors
                     $extraPlugins[] = array(
                         'name' => $name,
                         'button' => !empty($plugin['button'])?$plugin['button']:$name,
-                        'url' => $plugin_base_url.'/'.$name.'/plugin.js'
+                        'url' => sprintf($plugin_base_url, $name)
                     );
                 }
             }

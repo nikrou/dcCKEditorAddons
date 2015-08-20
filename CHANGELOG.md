@@ -1,5 +1,9 @@
 dcCKEditorAddons 0.3.0 - 2015-08-17
 ===================================
+* Remove .htaccess from directory that stores addons
+
+dcCKEditorAddons 0.3.0 - 2015-08-17
+===================================
 * Manage actions with drop/down list
 * Allow addons to be deleted.
 
