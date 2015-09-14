@@ -1,4 +1,8 @@
-dcCKEditorAddons 0.3.0 - 2015-08-17
+dcCKEditorAddons 0.3.1 - 2015-09-14
+===================================
+* Fix issue for addons with name and different directory names.
+
+dcCKEditorAddons 0.3.1 - 2015-08-20
 ===================================
 * Remove .htaccess from directory that stores addons
 

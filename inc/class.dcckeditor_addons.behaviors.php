@@ -37,7 +37,7 @@ class dcCKEditorAddonsBehaviors
                     $extraPlugins[] = array(
                         'name' => $name,
                         'button' => !empty($plugin['button'])?$plugin['button']:$name,
-                        'url' => sprintf($plugin_base_url, $name)
+                        'url' => sprintf($plugin_base_url, $plugin['path'])
                     );
                 }
             }

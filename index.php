@@ -49,7 +49,7 @@ $img_plugin_status[true] = sprintf($fmt_img, __('Activated'), 'check-on.png');
 $img_plugin_status[false] = sprintf($fmt_img, __('Deactivated'), 'check-off.png');
 
 foreach ($dirs = glob($dcckeditor_addons_repository_path.'/*/plugin.js') as $plugin_js) {
-    $plugin = array('name' => '', 'button' => '', 'activated' => false);
+    $plugin = array('name' => '', 'button' => '', 'path' => '', 'activated' => false);
     $plugin_js_content = file_get_contents($plugin_js);
     if (preg_match($name_pattern, $plugin_js_content, $matches)) {
         $plugin['name'] = $matches[1];
@@ -60,6 +60,7 @@ foreach ($dirs = glob($dcckeditor_addons_repository_path.'/*/plugin.js') as $plu
     if (preg_match($require_pattern, $plugin_js_content, $matches)) {
         $plugin['dependencies'] = $matches[1];
     }
+    $plugin['path'] = basename(dirname($plugin_js));
     if (!empty($plugin['name'])) {
         if (!empty($dcckeditor_addons_plugins[$plugin['name']])) {
             $plugin['activated'] = $dcckeditor_addons_plugins[$plugin['name']]['activated'];
