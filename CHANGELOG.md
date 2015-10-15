@@ -1,4 +1,8 @@
-dcCKEditorAddons 0.3.1 - 2015-09-14
+dcCKEditorAddons 0.3.3 - 2015-10-15
+===================================
+* Fix issue when deleting addons with name and different directory names.
+
+dcCKEditorAddons 0.3.2 - 2015-09-14
 ===================================
 * Fix issue for addons with name and different directory names.
 

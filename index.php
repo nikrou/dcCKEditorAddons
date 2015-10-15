@@ -178,7 +178,7 @@ if (!$dcckeditor_active) {
         } elseif ($_POST['action']=='delete') {
             try {
                 foreach ($_POST['plugins'] as $plugin_name) {
-                    if (!files::deltree($dcckeditor_addons_repository_path.'/'.$plugin_name)) {
+                    if (!files::deltree($dcckeditor_addons_repository_path.'/'.$dcckeditor_addons_plugins[$plugin_name]['path'])) {
                         throw new Exception(sprintf(__('Cannot remove addon "%s" files'), $plugin_name));
                     }
                     unset($plugins[$plugin_name]);
