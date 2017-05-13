@@ -1,3 +1,7 @@
+dcCKEditorAddons 0.3.4 - 2017-05-13
+===================================
+* Fix issue because of bad copy/paste. Thanks to Narann
+
 dcCKEditorAddons 0.3.3 - 2015-10-15
 ===================================
 * Fix issue when deleting addons with name and different directory names.

@@ -2,7 +2,7 @@
 // +-----------------------------------------------------------------------+
 // | dcCKEditorAddons - a plugin for Dotclear                              |
 // +-----------------------------------------------------------------------+
-// | Copyright(C) 2015 Nicolas Roudaire             http://www.nikrou.net  |
+// | Copyright(C) 2015-2017 Nicolas Roudaire        http://www.nikrou.net  |
 // +-----------------------------------------------------------------------+
 // | This program is free software; you can redistribute it and/or modify  |
 // | it under the terms of the GNU General Public License version 2 as     |
@@ -94,7 +94,7 @@ if (!$dcckeditor_active) {
                 }
 
                 if (is_dir($tmp_repository) && is_writable($tmp_repository)) {
-                    $core->blog->settings->related->put('repository_path', $tmp_repository);
+                    $core->blog->settings->dcCKEditorAddons->put('repository_path', $tmp_repository);
                     $repository = $tmp_repository;
                 } else {
                     try {
