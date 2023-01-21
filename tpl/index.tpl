@@ -18,7 +18,7 @@
     <?php if ($dcckeditor_active && $is_admin):?>
     <div class="multi-part" id="settings" title="<?php echo __('Settings');?>">
       <h3 class="hidden-if-js"><?php echo __('Settings');?></h3>
-      <form action="<?php echo $p_url;?>" method="post" enctype="multipart/form-data">
+      <form action="<?php echo  dcCore::app()->admin->getPageURL();?>" method="post" enctype="multipart/form-data">
 	<div class="fieldset">
 	  <h3><?php echo __('Plugin activation');?></h3>
 	  <p>
@@ -51,7 +51,7 @@
 
 	<p>
 	  <input type="hidden" name="p" value="dcCKEditorAddons"/>
-	  <?php echo $core->formNonce();?>
+	  <?php echo dcCore::app()->formNonce();?>
 	  <input type="submit" name="saveconfig" value="<?php echo __('Save configuration');?>" />
 	</p>
       </form>
@@ -61,10 +61,10 @@
     <div class="multi-part" id="plugins" title="<?php echo __('Plugins');?>">
       <h3 class="hidden-if-js"><?php echo __('Plugins');?></h3>
       <p class="top-add">
-	<a class="button add" href="<?php echo $p_url;?>#add-plugin"><?php echo __('Add a plugin');?></a>
+	<a class="button add" href="<?php echo  dcCore::app()->admin->getPageURL();?>#add-plugin"><?php echo __('Add a plugin');?></a>
       </p>
       <?php if (!empty($plugins)):?>
-      <form method="post" action="<?php echo $p_url;?>#plugins" enctype="multipart/form-data" name="plugins-list" id="plugins-form">
+      <form method="post" action="<?php echo  dcCore::app()->admin->getPageURL();?>#plugins" enctype="multipart/form-data" name="plugins-list" id="plugins-form">
 	<div class="table-outer ckeditor-addons">
 	  <table>
 	    <thead>
@@ -102,7 +102,7 @@
 	    <p class="col right">
 	      <label for="action" class="classic"><?php echo __('Selected addons action:');?></label>
 	      <?php echo form::combo('action', $plugins_actions_combo);?>
-	      <?php echo $core->formNonce();?>
+	      <?php echo dcCore::app()->formNonce();?>
 	      <input type="submit" value="<?php echo __('ok');?>" />
 	    </p>
 	  </div>
@@ -114,7 +114,7 @@
     <div class="multi-part" id="add-plugin" title="<?php echo __('Add a plugin');?>">
       <p><?php echo __('You can install plugins by uploading or downloading zip files.');?></p>
       <div class="fieldset">
-	<form method="post" action="<?php echo $p_url;?>#plugins" enctype="multipart/form-data" name="upload-plugin">
+	<form method="post" action="<?php echo dcCore::app()->admin->getPageURL();?>#plugins" enctype="multipart/form-data" name="upload-plugin">
 	  <h4><?php echo __('Upload a zip file');?></h4>
 	  <p class="field">
 	    <label for="plugin_file" class="classic required">
@@ -130,12 +130,12 @@
 	  </p>
 	  <p>
 	    <input type="submit" name="upload_plugin" value="<?php echo __('Upload');?>"/>
-	    <?php echo $core->formNonce();?>
+	    <?php echo dcCore::app()->formNonce();?>
 	  </p>
 	</form>
       </div>
       <div class="fieldset">
-	<form method="post" action="<?php echo $p_url;?>#plugins" enctype="multipart/form-data" name="download-plugin">
+	<form method="post" action="<?php echo dcCore::app()->admin->getPageURL();?>#plugins" enctype="multipart/form-data" name="download-plugin">
 	  <h4><?php echo __('Download a zip file');?></h4>
 	  <p class="field">
 	    <label for="plugin_url" class="classic required">
@@ -150,7 +150,7 @@
 	    <input type="password" name="your_pwd" id="passwd2" value="">
 	  <p>
 	    <input type="submit" name="fetch_plugin" value="<?php echo __('Download');?>"/>
-	    <?php echo $core->formNonce();?>
+	    <?php echo dcCore::app()->formNonce();?>
 	  </p>
 	</form>
       </div>
