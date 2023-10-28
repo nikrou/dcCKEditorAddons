@@ -1,3 +1,7 @@
+# dcCKEditorAddons 1.1.0 - 2023-10-28
+
+- Update code for dotclear 2.27
+
 # dcCKEditorAddons 1.0.0 - 2023-01-21
 
 - Update code for dotclear 2.24

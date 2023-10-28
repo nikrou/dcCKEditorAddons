@@ -15,11 +15,14 @@ $this->registerModule(
     "dcCKEditorAddons", // Name
     "Add CKEditor plugins easily to your blog", // Description
     "Nicolas Roudaire", // Author
-    '1.0.0', // Version
+    '1.1.0', // Version
     [
-        'permissions' => dcCore::app()->auth->makePermissions([dcAuth::PERMISSION_CONTENT_ADMIN, dcPages::PERMISSION_PAGES]),
+        'permissions' => dcCore::app()->auth->makePermissions([dcAuth::PERMISSION_CONTENT_ADMIN, initPages::PERMISSION_PAGES]),
         'type' => 'plugin',
-        'dc_min' => '2.24',
-        'requires' => [['core', '2.24']],
+        'dc_min' => '2.27',
+        'requires' => [['core', '2.27']],
+        'repository' => 'https://github.com/nikrou/dcCKEditorAddons',
+        'support' => 'https://forum.dotclear.org/viewtopic.php?id=48338',
+        'details' => 'https://plugins.dotaddict.org/dc2/details/dcCKEditorAddons'
     ]
 );

@@ -1,109 +1,199 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: dcCKEditorAddons 0.1.1\n"
-"Report-Msgid-Bugs-To: nikrou77+l10n@gmail.com\n"
-"POT-Creation-Date: 2015-08-17 20:33+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-28 08:29+0200\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: index.php:41 src/Manage.php:193
 msgid "Activate"
 msgstr "Activer"
 
+#: index.php:48 src/Manage.php:61 src/Manage.php:189
 msgid "Activated"
 msgstr "Activée"
 
+#: tpl/index.tpl:74 src/Manage.php:222
 msgid "Activated?"
 msgstr "Activée ? "
 
+#: tpl/index.tpl:56 tpl/index.tpl:93 tpl/index.tpl:98 tpl/index.tpl:64
+#: tpl/index.tpl:110 tpl/index.tpl:114 src/Manage.php:212 src/Manage.php:263
 msgid "Add a plugin"
 msgstr "Ajouter un plugin"
 
+#: index.php:136 index.php:141 index.php:142 index.php:145 src/Manage.php:117
 msgid "Addon has been downloaded."
 msgstr "L'extension a été téléchargée"
 
+#: index.php:124 index.php:129 index.php:130 index.php:133 src/Manage.php:105
 msgid "Addon has been uploaded."
 msgstr "L'extension a été téléchargée"
 
+#: inc/class.dcckeditor_addon.php:51 inc/class.dcckeditor_addon.php:54
+#: src/Addon.php:50 src/Addon.php:53
+msgid "An error occurred while downloading the file."
+msgstr ""
+
+#: tpl/index.tpl:11
 msgid "Are you sure you want to delete selected addon?"
 msgstr "Êtes-vous sûr de vouloir supprimer cette extension ? "
 
+#: tpl/index.tpl:10
 #, php-format
 msgid "Are you sure you want to delete selected addons (%s)?"
 msgstr "Êtes-vous sûr de vouloir supprimer ces %s extensions ? "
 
+#: tpl/index.tpl:65 tpl/index.tpl:64 tpl/index.tpl:72 src/Manage.php:220
 msgid "Button"
 msgstr "Bouton"
 
+#: index.php:181 src/Manage.php:158
 #, php-format
 msgid "Cannot remove addon \"%s\" files"
 msgstr "Impossible de supprimer les fichiers de l'extension \"%s\""
 
+#: tpl/index.tpl:30 tpl/index.tpl:38 src/Config.php:118
 msgid "Check if zip file is a valid CKEditor addon?"
 msgstr "Vérifier que le fichier zip est bien un plugin CKEditor"
 
+#: index.php:42 src/Manage.php:194
 msgid "Deactivate"
 msgstr "Désactiver"
 
+#: index.php:49 src/Manage.php:62 src/Manage.php:190
 msgid "Deactivated"
 msgstr "Désactivée"
 
+#: index.php:42 index.php:43 src/Manage.php:195
 msgid "Delete"
 msgstr "Supprimer"
 
+#: tpl/index.tpl:65 tpl/index.tpl:73 src/Manage.php:221
 msgid "Dependencies"
 msgstr "Dépendances"
 
+#: _install.php:42 index.php:75 index.php:96 index.php:101 index.php:102
+#: index.php:105 src/Config.php:77 _src/_install.php:32
 #, php-format
-msgid "Directory \"%s\" for dcCKEditorAddons plugins repository needs to allow read and write access."
-msgstr "Le répertoire \"%s\" pour le dépôt des plugins CKEditor nécessite un accès en lecture et écriture."
+msgid ""
+"Directory \"%s\" for dcCKEditorAddons plugins repository needs to allow read "
+"and write access."
+msgstr ""
+"Le répertoire \"%s\" pour le dépôt des plugins CKEditor nécessite un accès "
+"en lecture et écriture."
 
+#: tpl/index.tpl:135 tpl/index.tpl:139 src/Manage.php:290
+msgid "Download a zip file"
+msgstr "Déposer un fichier zip"
+
+#: inc/class.dcckeditor_addon.php:65 src/Addon.php:63
+msgid "Empty plugin zip file."
+msgstr "Le fichier zip de l'extension est vide"
+
+#: tpl/index.tpl:19 tpl/index.tpl:27 src/Config.php:107
 msgid "Enable dcCKEditorAddons plugin"
 msgstr "Activer le plugin dcCKEditorAddons"
 
-msgid "If test for a valid CKEditor addon failed and you can not add the addon, then uncheck that option or unzip the CKEditor addon manually"
-msgstr "Si le test pour vérifier que le zip est un plugin CKEditor valide, échoue, alors décochez la case ou installez le zip manuellement"
+#: tpl/index.tpl:34 tpl/index.tpl:42 src/Config.php:122
+msgid ""
+"If test for a valid CKEditor addon failed and you can not add the addon, "
+"then uncheck that option or unzip the CKEditor addon manually"
+msgstr ""
+"Si le test pour vérifier que le zip est un plugin CKEditor valide, échoue, "
+"alors décochez la case ou installez le zip manuellement"
 
+#: tpl/index.tpl:64 tpl/index.tpl:63 tpl/index.tpl:71 src/Manage.php:219
 msgid "Name"
 msgstr "Nom"
 
+#: tpl/index.tpl:15 tpl/index.tpl:23 src/Config.php:103
 msgid "Plugin activation"
 msgstr "Activation du plugin"
 
+#: tpl/index.tpl:8 tpl/index.tpl:53 tpl/index.tpl:54 tpl/index.tpl:16
+#: tpl/index.tpl:61 tpl/index.tpl:62 src/Manage.php:210
 msgid "Plugins"
 msgstr "Extensions"
 
+#: tpl/index.tpl:37 tpl/index.tpl:45 src/Config.php:125
 msgid "Repository path :"
 msgstr "Chemin du dépôt des extensions :"
 
+#: tpl/index.tpl:86 tpl/index.tpl:91
 msgid "Save addons configuration"
 msgstr "Enregistrer la configuration des extensions"
 
-#, php-format
+#: index.php:171 index.php:172 src/Manage.php:145
+msgid "Selected addon has been "
+msgid_plural "Selected addons have been "
+msgstr[0] "L'extension sélectionnée a été supprimée."
+msgstr[1] "Les %d extensions sélectionnées ont été supprimées."
+
+#: index.php:165
 msgid "Selected addon has been activated."
 msgid_plural "Selected addons have been activated"
 msgstr[0] "L'extension sélectionnée a été activée."
 msgstr[1] "Les %d extensions sélectionnées ont bien été activées."
 
-#, php-format
-msgid "Selected addon has been deactivated."
-msgid_plural "Selected addons have been deactivated"
-msgstr[0] "L'extension sélectionnée a été désactivée."
-msgstr[1] "Les %d extensions sélectionnées ont été désactivées."
-
+#: index.php:187 src/Manage.php:166
 #, php-format
 msgid "Selected addon has been deleted."
 msgid_plural "Selected (%d) addons have been deleted."
 msgstr[0] "L'extension sélectionnée a été supprimée."
 msgstr[1] "Les %d extensions sélectionnées ont été supprimées."
 
+#: tpl/index.tpl:99 tpl/index.tpl:103 src/Manage.php:251
 msgid "Selected addons action:"
 msgstr "Actions sur les extensions sélectionnées : "
 
+#: inc/class.dcckeditor_addon.php:82 inc/class.dcckeditor_addon.php:85
+#: inc/class.dcckeditor_addon.php:100 src/Addon.php:98
 msgid "The zip file does not appear to be a valid CKEditor addon."
 msgstr "Le fichier zip ne semble pas être une extension CKEditor valide"
 
+#: index.php:122 index.php:123 index.php:126 src/Manage.php:98
+msgid "Unable to move uploaded file."
+msgstr "Impossible de déplacer le fichier déposé"
+
+#: index.php:42
+msgid "Unactivate"
+msgstr "Désactiver"
+
+#: tpl/index.tpl:128 tpl/index.tpl:132 src/Manage.php:282
+msgid "Upload"
+msgstr "Déposer"
+
+#: tpl/index.tpl:114 tpl/index.tpl:118 src/Manage.php:268
+msgid "Upload a zip file"
+msgstr "Déposer un fichier zip"
+
+#: tpl/index.tpl:111 tpl/index.tpl:115 src/Manage.php:264
+msgid "You can install plugins by uploading or downloading zip files."
+msgstr "Vous pouvez installer des extensions en déposant ou en téléchargeant des fichiers zip"
+
+#: index.php:47 index.php:68 index.php:73 index.php:74 index.php:77
 msgid "You must enable dcCKEditor plugin to use that plugin."
 msgstr "Vous devez activer le plugin dcCKEditor pour utiliser ce plugin"
+
+#: tpl/index.tpl:138 tpl/index.tpl:142 src/Manage.php:293
+msgid "Zip file URL:"
+msgstr "URL du fichier zip : "
+
+#: tpl/index.tpl:117 tpl/index.tpl:121 src/Manage.php:271
+msgid "Zip file path:"
+msgstr "Nom du fichier zip : "
+
+#: src/Manage.php:209
+msgid "Extensions"
+msgstr "Extensions"
+
+#, php-format
+msgid "Selected addon has been deactivated."
+msgid_plural "Selected addons have been deactivated"
+msgstr[0] "L'extension sélectionnée a été désactivée."
+msgstr[1] "Les %d extensions sélectionnées ont été désactivées."

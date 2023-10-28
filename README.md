@@ -1,5 +1,7 @@
 # dcCKEditorAddons
 
+![PHPSTan level](https://img.shields.io/badge/PHPStan-level%205-brightgreen.svg?style=flat)
+
 Add easily new CKEditor addons to your dotclear blog.
 
 # Installation
@@ -14,7 +16,7 @@ Analysis is made using [PHPStan](https://github.com/phpstan/phpstan) :
 $ composer phpstan
 ```
 
-The analysis is made with level 1 but the idea is to increase that level and fix more and more possible issues.
+The analysis is made with level 5 but the idea is to increase that level and fix more and more possible issues.
 
 # Contributing
 

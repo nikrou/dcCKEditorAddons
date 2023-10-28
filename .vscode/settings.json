@@ -7,6 +7,9 @@
         "editor.defaultFormatter": "junstyle.php-cs-fixer",
         "editor.formatOnSave": true
     },
+    "files.associations": {
+        "*.tpl": "php"
+    },
     "php-cs-fixer.onsave": true,
     "files.exclude": {
         "**/.dist": true,

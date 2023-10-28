@@ -11,9 +11,12 @@
  *  -- END LICENSE BLOCK ------------------------------------
  */
 
-Clearbricks::lib()->autoload(
-    [
-        'dcCKEditorAddon' => __DIR__ . '/inc/class.dcckeditor_addon.php',
-        'dcCKEditorAddonsBehaviors' => __DIR__ . '/inc/class.dcckeditor_addons.behaviors.php'
-    ]
-);
+declare(strict_types=1);
+
+namespace Dotclear\Plugin\dcCKEditorAddons;
+
+use Dotclear\Module\MyPlugin;
+
+class My extends MyPlugin
+{
+}

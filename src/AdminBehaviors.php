@@ -11,17 +11,22 @@
  *  -- END LICENSE BLOCK ------------------------------------
  */
 
-class dcCKEditorAddonsBehaviors
+declare(strict_types=1);
+
+namespace Dotclear\Plugin\dcCKEditorAddons;
+
+use dcCore;
+
+class AdminBehaviors
 {
-    public static function ckeditorExtraPlugins(ArrayObject $extraPlugins, $context)
+    public static function ckeditorExtraPlugins(\ArrayObject $extraPlugins, $context)
     {
-        $self_ns = dcCore::app()->blog->settings->addNamespace('dcCKEditorAddons');
-        if (!$self_ns->active) {
+        if (!My::settings()->active) {
             return;
         }
 
-        $plugin_base_url = dcCore::app()->blog->host . dcCore::app()->blog->settings->system->public_url . '/' . basename($self_ns->repository_path) . '/%s/plugin.js';
-        $plugins = json_decode($self_ns->plugins, true);
+        $plugin_base_url = dcCore::app()->blog->host . dcCore::app()->blog->settings->system->public_url . '/' . basename(My::settings()->repository_path) . '/%s/plugin.js';
+        $plugins = json_decode(My::settings()->plugins, true);
         if (!empty($plugins)) {
             foreach ($plugins as $name => $plugin) {
                 if ($plugin['activated']) {

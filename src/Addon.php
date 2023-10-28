@@ -11,7 +11,15 @@
  *  -- END LICENSE BLOCK ------------------------------------
  */
 
-class dcCKEditorAddon
+declare(strict_types=1);
+
+namespace Dotclear\Plugin\dcCKEditorAddons;
+
+use Dotclear\Helper\File\Files;
+use Dotclear\Helper\File\Zip\Unzip;
+use Dotclear\Helper\Network\HttpClient;
+
+class Addon
 {
     private $zip_file = '';
 
@@ -26,10 +34,10 @@ class dcCKEditorAddon
 
         // Check and add default protocol if necessary
         if (!preg_match('%^http[s]?:\/\/%', $url)) {
-            $url = 'http://' . $url;
+            $url = 'https://' . $url;
         }
         // Download package
-        if ($client = netHttp::initClient($url, $path)) {
+        if ($client = HttpClient::initClient($url, $path)) {
             try {
                 $client->setUserAgent('DotClear.org CKEditorBrowser/0.1');
                 $client->useGzip(false);
@@ -37,22 +45,22 @@ class dcCKEditorAddon
                 $client->setOutput($this->zip_file);
                 $client->get($path);
                 unset($client);
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 unset($client);
-                throw new Exception(__('An error occurred while downloading the file.'));
+                throw new \Exception(__('An error occurred while downloading the file.'));
             }
         } else {
-            throw new Exception(__('An error occurred while downloading the file.'));
+            throw new \Exception(__('An error occurred while downloading the file.'));
         }
     }
 
     public function install()
     {
-        $zip = new fileUnzip($this->zip_file);
+        $zip = new Unzip($this->zip_file);
         if ($zip->isEmpty()) {
             $zip->close();
             unlink($this->zip_file);
-            throw new Exception(__('Empty plugin zip file.'));
+            throw new \Exception(__('Empty plugin zip file.'));
         }
 
         $zip_root_dir = $zip->getRootDir();
@@ -71,7 +79,7 @@ class dcCKEditorAddon
             }
         }
 
-        if ($zip_root_dir != false) {
+        if ($zip_root_dir !== false) {
             $target = dirname($this->zip_file);
             $destination = $target . '/' . $zip_root_dir;
             $plugin_js = $zip_root_dir . '/plugin.js';
@@ -83,16 +91,16 @@ class dcCKEditorAddon
             $has_plugin_js = $zip->hasFile($plugin_js);
         }
 
-        if (dcCore::app()->blog->settings->dcCKEditorAddons->check_validity) {
+        if (My::settings()->check_validity) {
             if (!$has_plugin_js) {
                 $zip->close();
                 unlink($this->zip_file);
-                throw new Exception(__('The zip file does not appear to be a valid CKEditor addon.'));
+                throw new \Exception(__('The zip file does not appear to be a valid CKEditor addon.'));
             }
         }
 
         if (!is_dir($destination)) {
-            files::makeDir($destination, true);
+            Files::makeDir($destination, true);
         }
 
         $zip->unzipAll($target);
